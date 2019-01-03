@@ -187,6 +187,12 @@ class JavaASTPlugin(FileContentsPlugin):
                     JavaASTPlugin.java_ast = None
                     JavaASTPlugin.parseable = False
                     return
+                except:
+                    log.debug("LexerError from tokenizer.py has raised!")
+                    log.debug("Unable to parse file %s", self.file_path)
+                    JavaASTPlugin.java_ast = None
+                    JavaASTPlugin.parseable = False
+                    return
 
         if call_run and self.java_ast is not None:
             self.run()
