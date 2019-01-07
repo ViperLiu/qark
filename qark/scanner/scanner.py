@@ -120,7 +120,6 @@ class Scanner(object):
             log.debug("Decompiler does not have a build directory")
     
     def regroup_issues(self):
-        from qark.issue import Issue
         new_issues = dict()
 
         for issue in self.issues:
