@@ -2,10 +2,12 @@
 <head><title>Temporary Report Template</title></head>
 <body>
 <h1>Issues</h1>
-{% for issue in issues %}
-<h2>{{ issue.severity.name }} {{ issue.name }}</h2>
-{{ issue.description }} <br/><br/>
-File: <a href="file://{{ issue.file_object }}">{{ issue.file_object }}{% if issue.line_number %}:{{ issue.line_number[0] }}:{{ issue.line_number[1] }} {% endif %}</a><br/>
+{% for key, value in issues.items() %}
+<h2>{{ value[0].severity.name }} {{ value[0].name }}</h2>
+{{ value[0].description }} <br/><br/>
+    {% for issue in value %}
+    File: <a href="file://{{ issue.file_object }}">{{ issue.file_object }}{% if issue.line_number %}:{{ issue.line_number[0] }}:{{ issue.line_number[1] }} {% endif %}</a><br/>
+    {% endfor %}
 {% endfor %}
 </body>
 </html>
