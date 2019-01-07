@@ -63,6 +63,6 @@ class Report(object):
                 template = jinja_env.get_template('{file_type}_report.jinja'.format(file_type=file_type))
             else:
                 template = Template(template_file)
-            report_file.write(template.render(issues=list(self.issues)))
+            report_file.write(template.render(issues=self.issues))
 
         return full_report_path

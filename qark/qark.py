@@ -89,10 +89,12 @@ def cli(ctx, sdk_path, build_path, debug, source, report_type, exploit_apk):
     else:
         scanner = Scanner(manifest_path=decompiler.manifest_path, path_to_source=decompiler.build_directory)
     scanner.run()
+    scanner.regroup_issues()
+
     click.secho("Finish scans...")
 
     click.secho("Writing report...")
-    report = Report(issues=set(scanner.issues))
+    report = Report(issues=dict(scanner.issues))
     report_path = report.generate(file_type=report_type)
     click.secho("Finish writing report to {report_path} ...".format(report_path=report_path))
 
