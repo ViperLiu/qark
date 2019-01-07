@@ -118,6 +118,17 @@ class Scanner(object):
                     self.files.add(path.join(dir_path, file_name))
         except AttributeError:
             log.debug("Decompiler does not have a build directory")
+    
+    def regroup_issues(self):
+        from qark.issue import Issue
+        new_issues = dict()
+
+        for issue in self.issues:
+            if issue.name not in new_issues:
+                new_issues[issue.name] = list()
+            new_issues[issue.name].append(issue)
+
+        self.issues = dict(new_issues)
 
 
 class Subject(object):
