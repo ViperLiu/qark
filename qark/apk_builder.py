@@ -114,7 +114,7 @@ class APKBuilder(object):
             try:
                 subprocess.call(shlex.split(command))
             except Exception:
-                log.exception("Error running command %s")
+                log.exception("Error running command %s", command)
                 raise  # raise here as we can still make the report for the user
         except Exception:
             raise
