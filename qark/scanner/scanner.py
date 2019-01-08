@@ -127,7 +127,7 @@ class Scanner(object):
                 new_issues[issue.name] = list()
             new_issues[issue.name].append(issue)
 
-        self.issues = dict(new_issues)
+        return dict(new_issues)
 
 
 class Subject(object):
